@@ -14,7 +14,7 @@ const electroTornado= {name: "Saetta", nature_element: natureElements[4], attack
 const lordOfTheSand= {name: "Lord of the sand", nature_element: natureElements[5], attack: 1, defense: 1, speed: 1, life: 10, luck: 1};
 
 //Regex
-let patternName= /^[A-Za-z]$/i;
+let patternName= /[A-Za-z]/i;
 let patternElements= /^(ice|fire|wood|stone|electricity|sand)$/i;
 let patternWeapons=/^(sword|machete|knife|axe|shuriken)$/i;
 
@@ -45,13 +45,26 @@ const chooseCharacterElementAndWeapon = () => {
 
     do {
         userCharacter.weapon=prompt("please choose weapon of you caracter\n"+ weaponsList.join(" "));
-        if (patternElements.test(userCharacter.weapon)===false) {
+        if (patternWeapons.test(userCharacter.weapon)===false) {
             alert("Input not valid, please insert only elements")
         } else if (userCharacter.weapon===null) {
             alert("Empty or cancel button");
         }
     
     } while (userCharacter.weapon===null || patternWeapons.test(userCharacter.weapon)===false)
+}
+
+let skillPoints=15;
+//fare skill points
+const chooseCharacterSkills = (skillPoints) => {
+    while (skillPoints!==0) {
+        userCharacter.attack=parseInt(prompt("Point to attack "))
+        userCharacter.defense=parseInt(prompt("Point to defense "))
+        userCharacter.speed=parseInt(prompt("Point to speed "))
+        userCharacter.life=parseInt(prompt("Point to life "))
+        userCharacter.luck=parseInt(prompt("Point to luck "))
+    }
+
 }
 
 
