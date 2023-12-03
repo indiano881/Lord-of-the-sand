@@ -5,18 +5,19 @@ const possibleEncounter=["enemies","treasure","food/water","village","forest"];
 const weaponsList = ["sword","machete","knife","axe","shuriken"];
 //seconda mano scudo o altra arma o magia
 //characters of the story
-let userCharacter = {name: undefined, nature_element: undefined, weapon:undefined, attack: 1, defense: 1, speed: 1, life: 10, luck: 1};
-const iceCiclope= {name: "Bebis", nature_element: natureElements[0], attack: 1, defense: 1, speed: 1, life: 10, luck: 1};;
-const magmaTitan= {name: "Vulcan", nature_element: natureElements[1], attack: 1, defense: 1, speed: 1, life: 10, luck: 1};
-const madOatTree= {name: "Jek", nature_element: natureElements[2], attack: 1, defense: 1, speed: 1, life: 10, luck: 1};
-const stoneTroll= {name: "Lukas", nature_element: natureElements[3], attack: 1, defense: 1, speed: 1, life: 10, luck: 1};
-const electroTornado= {name: "Saetta", nature_element: natureElements[4], attack: 1, defense: 1, speed: 1, life: 10, luck: 1};
-const lordOfTheSand= {name: "Lord of the sand", nature_element: natureElements[5], attack: 1, defense: 1, speed: 1, life: 10, luck: 1};
+let userCharacter = {name: undefined, nature_element: undefined, weapon:undefined, attack: 1, defense: 1, speed: 1, life: 10};
+const iceCiclope= {name: "Bebis", nature_element: natureElements[0], attack: 1, defense: 1, speed: 1, life: 10};;
+const magmaTitan= {name: "Vulcan", nature_element: natureElements[1], attack: 1, defense: 1, speed: 1, life: 10};
+const madOatTree= {name: "Jek", nature_element: natureElements[2], attack: 1, defense: 1, speed: 1, life: 10};
+const stoneTroll= {name: "Lukas", nature_element: natureElements[3], attack: 1, defense: 1, speed: 1, life: 10};
+const electroTornado= {name: "Saetta", nature_element: natureElements[4], attack: 1, defense: 1, speed: 1, life: 10};
+const lordOfTheSand= {name: "Lord of the sand", nature_element: natureElements[5], attack: 1, defense: 1, speed: 1, life: 10};
 
 //Regex
 let patternName= /[A-Za-z]/i;
 let patternElements= /^(ice|fire|wood|stone|electricity|sand)$/i;
 let patternWeapons=/^(sword|machete|knife|axe|shuriken)$/i;
+let patternPoints= /[0-9]/;
 
 alert("***The 5 great spirits have freed an ancient demoniac crature!***\n***The lord of the sand is back! And want to destroy your world!***\n***Will you be able to save us?***");
 
@@ -58,15 +59,26 @@ let skillPoints=15;
 //fare skill points
 const chooseCharacterSkills = (skillPoints) => {
     while (skillPoints!==0) {
-        userCharacter.attack=parseInt(prompt("Point to attack "))
-        userCharacter.defense=parseInt(prompt("Point to defense "))
-        userCharacter.speed=parseInt(prompt("Point to speed "))
-        userCharacter.life=parseInt(prompt("Point to life "))
-        userCharacter.luck=parseInt(prompt("Point to luck "))
-    }
-//CONTINUARE QUESTO
+        
+            userCharacter.attack=parseInt(prompt("Point to attack "));
+            skillPoints= skillPoints-userCharacter.attack;
+        
+            userCharacter.defense=parseInt(prompt("Point to defense "));
+            skillPoints= skillPoints-userCharacter.defense;
+        
+            userCharacter.speed=parseInt(prompt("Point to speed "));
+            skillPoints= skillPoints-userCharacter.speed;
+        
+            userCharacter.life=parseInt(prompt("Point to life "));
+            skillPoints= skillPoints-userCharacter.life;
+        
+    } 
 }
-
+/*
+||userCharacter.attack===null || patternPoints.test(userCharacter.attack) ||
+    userCharacter.defense===null || patternPoints.test(userCharacter.defense) || userCharacter.speed===null || 
+    patternPoints.test(userCharacter.speed)|| userCharacter.life===null || patternPoints.test(userCharacter.life
+*/
 
 
 
@@ -77,6 +89,7 @@ const chooseCharacterSkills = (skillPoints) => {
 
 chooseCharacterName();
 chooseCharacterElementAndWeapon();
+chooseCharacterSkills(skillPoints);
 /*
 const playGame = () => {
     const characters = ["Fighter", "Ninja", "Wizard", "Amazon", "Necromancer"];
