@@ -1,5 +1,5 @@
 //arrays
-const enemiesList = ["Ice ciclope", "Magma Titan", "Mad Oat Tree", "Stone troll", "Electro-tornado","Lord of the sand"];
+const enemiesList = ["Ice ciclope", "Magma Titan", "Mad Oat Tree", "Stone troll", "Electro-dragon","Master of the sand"];
 const natureElements=["ice","fire","wood","stone","electricity","sand"];
 const possibleEncounter=["enemies","treasure","food/water","village","forest"];
 const weaponsList = ["sword","machete","knife","axe","shuriken"];
@@ -79,7 +79,22 @@ const chooseCharacterSkills = (skillPoints) => {
     userCharacter.defense===null || patternPoints.test(userCharacter.defense) || userCharacter.speed===null || 
     patternPoints.test(userCharacter.speed)|| userCharacter.life===null || patternPoints.test(userCharacter.life
 */
+const introStory = () => {
+    alert(`In the desert of Mohaaval, a banned being is meditating.\n
+    ${userCharacter.name}, also known as Ronin of ${userCharacter.nature_element}, perceives a disturbance in the air!\n
+    His ancient enemy ${enemiesList[5]} is again claiming his soul!\n Armed with is ${userCharacter.weapon} and his magic ${userCharacter.nature_element} power decide to fight again!`);
+    }
 
+const displayPoints= () => {
+    alert(`${userCharacter.name} ´s current point: \n
+    attack : ${userCharacter.attack}\n
+    defense : ${userCharacter.defense}\n
+    speed : ${userCharacter.speed}\n
+    life : ${userCharacter.life}`)
+
+}
+
+//encounters
 
 
 
@@ -90,6 +105,8 @@ const chooseCharacterSkills = (skillPoints) => {
 chooseCharacterName();
 chooseCharacterElementAndWeapon();
 chooseCharacterSkills(skillPoints);
+introStory();
+displayPoints();
 /*
 const playGame = () => {
     const characters = ["Fighter", "Ninja", "Wizard", "Amazon", "Necromancer"];
