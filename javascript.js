@@ -1,7 +1,7 @@
 //arrays
 const enemiesList = ["Ice ciclope", "Magma Titan", "Mad Oat Tree", "Stone troll", "Electro-dragon","Master of the sand"];
 const natureElements=["ice","fire","wood","stone","electricity","sand"];
-const possibleEncounter=["enemies","treasure","food/water","village","forest"];
+const possibleEncounter=["enemies","food/water","village","blacksmith"];
 const weaponsList = ["sword","machete","knife","axe","shuriken"];
 //seconda mano scudo o altra arma o magia
 //characters of the story
@@ -10,7 +10,7 @@ const iceCiclope= {name: "Bebis", nature_element: natureElements[0], attack: 1, 
 const magmaTitan= {name: "Vulcan", nature_element: natureElements[1], attack: 1, defense: 1, speed: 1, life: 10};
 const madOatTree= {name: "Jek", nature_element: natureElements[2], attack: 1, defense: 1, speed: 1, life: 10};
 const stoneTroll= {name: "Lukas", nature_element: natureElements[3], attack: 1, defense: 1, speed: 1, life: 10};
-const electroTornado= {name: "Saetta", nature_element: natureElements[4], attack: 1, defense: 1, speed: 1, life: 10};
+const electro_dragon= {name: "Saetta", nature_element: natureElements[4], attack: 1, defense: 1, speed: 1, life: 10};
 const lordOfTheSand= {name: "Lord of the sand", nature_element: natureElements[5], attack: 1, defense: 1, speed: 1, life: 10};
 
 //Regex
@@ -82,7 +82,7 @@ const chooseCharacterSkills = (skillPoints) => {
 const introStory = () => {
     alert(`In the desert of Mohaaval, a banned being is meditating.\n
     ${userCharacter.name}, also known as Ronin of ${userCharacter.nature_element}, perceives a disturbance in the air!\n
-    His ancient enemy ${enemiesList[5]} is again claiming his soul!\n Armed with is ${userCharacter.weapon} and his magic ${userCharacter.nature_element} power decide to fight again!`);
+    His ancient enemy ${enemiesList[5]} is again claiming his soul!\n Armed with is ${userCharacter.weapon} and his magic ${userCharacter.nature_element} powers decide to fight again!`);
     }
 
 const displayPoints= () => {
@@ -91,12 +91,26 @@ const displayPoints= () => {
     defense : ${userCharacter.defense}\n
     speed : ${userCharacter.speed}\n
     life : ${userCharacter.life}`)
-
 }
 
 //encounters
-
-
+const encounterGenerator = () => {
+    //const possibleEncounter=["enemies","food/water","village","blacksmith"];
+    randomEncounter= possibleEncounter[Math.floor(Math.random()*possibleEncounter.length)];
+    if (randomEncounter===possibleEncounter[0]) {
+        //enemies;
+    } else if (randomEncounter===possibleEncounter[1]) {
+        //food water;
+    } else if (randomEncounter===possibleEncounter[2]) {
+        //village;
+    } else {
+        //blacksmith-DONE
+        alert(`During a cold day our hero ${userCharacter.name} meet a blacksmith`);
+        let answer=prompt("Do you want to change your weapon or nature element powers?")
+        answer === "yes" ? chooseCharacterElementAndWeapon() : `${userCharacter.name} proceed with his journey`; 
+        
+    }
+}
 
 
 
@@ -107,6 +121,8 @@ chooseCharacterElementAndWeapon();
 chooseCharacterSkills(skillPoints);
 introStory();
 displayPoints();
+//game here
+encounterGenerator();
 /*
 const playGame = () => {
     const characters = ["Fighter", "Ninja", "Wizard", "Amazon", "Necromancer"];
